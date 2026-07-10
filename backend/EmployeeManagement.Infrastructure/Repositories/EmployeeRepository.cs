@@ -1,10 +1,11 @@
-﻿using EmployeeManagement.Domain.Entities;
+﻿using EmployeeManagement.Application.Interfaces;
+using EmployeeManagement.Domain.Entities;
 using EmployeeManagement.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeManagement.Infrastructure
 {
-    public class EmployeeRepository
+    public class EmployeeRepository : IEmployeeRepository
     {
         private readonly AppDbContext _appDbContext;
 
