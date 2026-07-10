@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="EmployeeManagement.Application/EmployeeManagement.Application.csproj" Id="2e95e279-a149-4e9a-ba34-b59ca72feaea" />
   <Project Path="EmployeeManagement.Domain/EmployeeManagement.Domain.csproj" Id="ac5ffbb8-5232-43ff-a451-16bf6723921a" />
+  <Project Path="EmployeeManagement.Tests/EmployeeManagement.Tests.csproj" Id="830fbc87-5d63-461a-b4f8-6bc9966d14bc" />
 </Solution>
