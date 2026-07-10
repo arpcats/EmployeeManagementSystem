@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="EmployeeManagement.Application/EmployeeManagement.Application.csproj" Id="2e95e279-a149-4e9a-ba34-b59ca72feaea" />
+  <Project Path="EmployeeManagement.Domain/EmployeeManagement.Domain.csproj" Id="ac5ffbb8-5232-43ff-a451-16bf6723921a" />
+</Solution>

@@ -1,0 +1,14 @@
+# .NET
+backend/**/bin/
+backend/**/obj/
+*.user
+
+# Angular / Node
+
+# IDE
+.vs/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
