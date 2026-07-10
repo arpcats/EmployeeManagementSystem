@@ -1,8 +1,10 @@
 using EmployeeManagement.API.Middleware;
 using EmployeeManagement.Application.Interfaces;
 using EmployeeManagement.Application.Services;
+using EmployeeManagement.Application.Validators;
 using EmployeeManagement.Infrastructure;
 using EmployeeManagement.Infrastructure.Persistence;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,6 +31,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreateEmployeeDtoValidator>();
 
 builder.Services.AddCors(options =>
 {
