@@ -48,7 +48,7 @@ namespace EmployeeManagement.Tests.Services
             // Assert
             result.Should().HaveCount(1);
             result.First().FirstName.Should().Be("John");
-            result.First().Email.Should().Be("john@test.com");
+            result.First().Email.Should().Be("john@testmail.com");
         }
 
         [Fact]

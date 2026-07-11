@@ -23,6 +23,38 @@ namespace EmployeeManagement.Infrastructure.Persistence.Configurations
 
             builder.HasIndex(e => e.Email).IsUnique();
 
+            // Seed data so the API/UI has something to show immediately after
+            // the first migration, without requiring manual data entry.
+            builder.HasData(
+                new Employee
+                {
+                    EmployeeId = 1,
+                    FirstName = "John",
+                    LastName = "Joe",
+                    Email = "john.doe@testmail.com",
+                    Department = "IT",
+                    EmploymentStatus = Domain.Enums.EmploymentStatus.Active
+                },
+                new Employee
+                {
+                    EmployeeId = 2,
+                    FirstName = "Tony",
+                    LastName = "Payumo",
+                    Email = "tony.payumo@testmail.com",
+                    Department = "IT",
+                    EmploymentStatus = Domain.Enums.EmploymentStatus.OnLeave
+                },
+                new Employee
+                {
+                    EmployeeId = 3,
+                    FirstName = "Jose",
+                    LastName = "Rizal",
+                    Email = "jose.rizal@testmail.com",
+                    Department = "Finance",
+                    EmploymentStatus = Domain.Enums.EmploymentStatus.Active
+                }
+            );
+
         }
     }
 }
