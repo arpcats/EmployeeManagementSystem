@@ -1,0 +1,49 @@
+<section class="employee-list">
+  <div class="toolbar">
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Search employees by name..."
+      [formControl]="searchControl"
+      aria-label="Search employees by name"
+    />
+    <a routerLink="/employees/new" class="btn btn-primary">+ Add Employee</a>
+  </div>
+
+  @if (loading()) {
+    <p class="status-message">Loading employees...</p>
+  } @else if (errorMessage()) {
+    <p class="status-message status-error">{{ errorMessage() }}</p>
+  } @else if (employees().length === 0) {
+    <p class="status-message">No employees found.</p>
+  } @else {
+    <table class="employee-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Department</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (employee of employees(); track employee.employeeId) {
+          <tr>
+            <td>{{ employee.firstName }} {{ employee.lastName }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.department }}</td>
+            <td>
+              <span class="status-badge" [attr.data-status]="employee.employmentStatus">
+                {{ employee.employmentStatus }}
+              </span>
+            </td>
+            <td>
+              <a [routerLink]="['/employees', employee.employeeId, 'edit']" class="btn btn-secondary">Edit</a>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
+</section>

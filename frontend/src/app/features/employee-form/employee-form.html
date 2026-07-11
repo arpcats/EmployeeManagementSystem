@@ -1,0 +1,67 @@
+<section class="employee-form">
+  <h2>{{ isEditMode() ? 'Edit Employee' : 'Add Employee' }}</h2>
+
+  @if (loading()) {
+    <p class="status-message">Loading employee...</p>
+  } @else {
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+      <div class="form-field">
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" formControlName="firstName" />
+        @if (firstName.invalid && firstName.touched) {
+          <span class="field-error">First name is required.</span>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" formControlName="lastName" />
+        @if (lastName.invalid && lastName.touched) {
+          <span class="field-error">Last name is required.</span>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" />
+        @if (email.invalid && email.touched) {
+          <span class="field-error">
+            {{ email.errors?.['required'] ? 'Email is required.' : 'Enter a valid email address.' }}
+          </span>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="department">Department</label>
+        <input id="department" type="text" formControlName="department" />
+        @if (department.invalid && department.touched) {
+          <span class="field-error">Department is required.</span>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="employmentStatus">Employment Status</label>
+        <select id="employmentStatus" formControlName="employmentStatus">
+          <option value="" disabled>Select a status</option>
+          @for (status of statusOptions; track status) {
+            <option [value]="status">{{ status }}</option>
+          }
+        </select>
+        @if (employmentStatus.invalid && employmentStatus.touched) {
+          <span class="field-error">Employment status is required.</span>
+        }
+      </div>
+
+      @if (serverError()) {
+        <p class="status-message status-error">{{ serverError() }}</p>
+      }
+
+      <div class="form-actions">
+        <a routerLink="/employees" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary" [disabled]="saving()">
+          {{ saving() ? 'Saving...' : 'Save' }}
+        </button>
+      </div>
+    </form>
+  }
+</section>
